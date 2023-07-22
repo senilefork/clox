@@ -103,15 +103,14 @@ static TokenType checkKeyword(int start, int length,
     memcmp(scanner.start + start, rest, length) == 0){
     return type;
   }
-
   return TOKEN_IDENTIFIER;
 }
 
 static TokenType identifierType(){
   switch (scanner.start[0]){
-        case 'a': checkKeyword(1, 2, "nd", TOKEN_AND);
-        case 'c': checkKeyword(1, 4, "lass", TOKEN_CLASS);
-        case 'e': checkKeyword(1, 3, "lse", TOKEN_ELSE);
+        case 'a': return checkKeyword(1, 2, "nd", TOKEN_AND);
+        case 'c': return checkKeyword(1, 4, "lass", TOKEN_CLASS);
+        case 'e': return checkKeyword(1, 3, "lse", TOKEN_ELSE);
         case 'f':
             if (scanner.current - scanner.start > 1){
                 switch (scanner.start[1]) {
@@ -121,12 +120,12 @@ static TokenType identifierType(){
                 }
             }
             break;
-        case 'i': checkKeyword(1, 1, "f", TOKEN_IF);
-        case 'n': checkKeyword(1, 2, "il", TOKEN_NIL);
-        case 'o': checkKeyword(1, 1, "r", TOKEN_OR);
-        case 'p': checkKeyword(1, 4, "rint", TOKEN_PRINT);
-        case 'r': checkKeyword(1, 5, "eturn", TOKEN_RETURN);
-        case 's': checkKeyword(1, 4, "uper", TOKEN_SUPER);
+        case 'i': return checkKeyword(1, 1, "f", TOKEN_IF);
+        case 'n': return checkKeyword(1, 2, "il", TOKEN_NIL);
+        case 'o': return checkKeyword(1, 1, "r", TOKEN_OR);
+        case 'p': return checkKeyword(1, 4, "rint", TOKEN_PRINT);
+        case 'r': return checkKeyword(1, 5, "eturn", TOKEN_RETURN);
+        case 's': return checkKeyword(1, 4, "uper", TOKEN_SUPER);
         case 't': 
             if (scanner.current - scanner.start > 1){
                 switch(scanner.start[1]) {
@@ -135,8 +134,8 @@ static TokenType identifierType(){
                 }
             }
             break;
-        case 'v': checkKeyword(1, 2, "ar", TOKEN_ELSE);
-        case 'w': checkKeyword(1, 4, "hile", TOKEN_WHILE);
+        case 'v': return checkKeyword(1, 2, "ar", TOKEN_VAR);
+        case 'w': return checkKeyword(1, 4, "hile", TOKEN_WHILE);
     }
   return TOKEN_IDENTIFIER;
 }

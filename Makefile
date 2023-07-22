@@ -2,7 +2,7 @@
 CC = cc
 CFLAGS = -g -c 
 
-OBJS = chunk.o compiler.o debug.o main.o memory.o scanner.o vm.o value.o 
+OBJS = chunk.o compiler.o debug.o main.o memory.o scanner.o vm.o value.o object.o table.o
 EXEC = run
 
 all: $(EXEC)
@@ -34,5 +34,14 @@ value.o: value.c
 vm.o: vm.c
 	$(CC) $(CFLAGS) vm.c
 
+object.o: object.c
+	$(CC) $(CFLAGS) object.c
+
+table.o: table.c
+	$(CC) $(CFLAGS) table.c
+
 clean:
 	rm -f $(OBJS) $(EXEC)
+
+
+
